@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import Header from "./components/header"
+import Destinations from "./components/destinations"
+import travelCards from "./data"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = ()=>{
+    const myVisitedCountry = travelCards.map((travelCard)=>{
+        return (
+            <Destinations 
+                title={travelCard.title}
+                location={travelCard.location}
+                googleMapsUrl={travelCard.googleMapsUrl}
+                startDate={travelCard.startDate}
+                endDate={travelCard.endDate}
+                description={travelCard.description}
+                imageUrl={travelCard.imageUrl}
+            />
+        )
+    })
+    return (
+        <>
+            <Header />
+            {myVisitedCountry}
+        </>
+    )
 }
 
 export default App;
